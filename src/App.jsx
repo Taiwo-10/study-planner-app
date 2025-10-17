@@ -3,6 +3,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
+import ProgressTracker from "./components/ProgressTracker";
+import HolidayNotice from "./components/HolidayNotice";
+import CalendarView from "./components/CalendarView";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -29,15 +32,32 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      {/* Navbar */}
       <Navbar />
-      <main className="flex flex-col items-center justify-start flex-grow p-8">
+
+      {/* Main content area */}
+      <main className="flex flex-col items-center justify-start flex-grow p-8 space-y-8 w-full">
+        {/* Holiday notice (optional announcements or reminders) */}
+        <HolidayNotice />
+
+        {/* Task creation form */}
         <TaskForm onAddTask={addTask} />
+
+        {/* Progress tracker showing completion percentage */}
+        <ProgressTracker tasks={tasks} />
+
+        {/* Calendar view for scheduling or seeing task distribution */}
+        <CalendarView tasks={tasks} />
+
+        {/* List of tasks */}
         <TaskList
           tasks={tasks}
           onToggleComplete={toggleComplete}
           onDelete={deleteTask}
         />
       </main>
+
+      {/* Footer */}
       <Footer />
     </div>
   );

@@ -31,7 +31,9 @@ function App() {
     );
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="relative min-h-screen text-gray-900 dark:text-gray-100 overflow-hidden">
+      {/* Blurred gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-200 via-blue-200 to-purple-200 blur-3xl opacity-40"></div>
       {/* Navbar */}
       <Navbar />
 
